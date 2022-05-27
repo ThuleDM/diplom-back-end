@@ -5,11 +5,10 @@
             <h1>{{product.title}}</h1>
 
             <div class="carousel carousel-slider">    
-                <a class="carousel-item" href="#one!"><img src="https://itc.ua/wp-content/uploads/2019/01/dims-1-5.jpg"></a>
-                <a class="carousel-item" href="#two!"><img src="https://deltasport.ua/upload/iblock/dc2/DR8581_800_preview.png"></a>
-            </div>
-
-            <img src="{{product.img}}" alt="{{product.title}}">    
+                {{#each product.img}}
+                <a class="carousel-item"><img src="/media/{{filename}}"></a>
+                {{/each}}
+            </div>  
             <p class="price big">{{product.price}}</p>        
         </div>
         <div class="col s5">
