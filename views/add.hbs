@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="row col s6 offset-s3">
+        <h1 >Add new product</h1>
+    </div>
+    
+    
+    <form action="/add" method="POST">
+        <div class="row">
+            <div class="input-field col s6 offset-s3">
+                <input id="title" name = "title" type="text" class="validate" required>
+                <label for="title">Product name</label>
+                <span class="helper-text" data-error="Input name"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s3 offset-s3">
+                <input id="price" name = "price" type="number" class="validate" required min="10">
+                <label for="price">Price</label>
+                <span class="helper-text" data-error="Input price"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 offset-s3">
+                <input id="category" name = "category" type="text" class="validate" required >
+                <label for="category">Category</label>
+                <span class="helper-text" data-error="Input category"></span>
+            </div>
+        </div>
+        {{!-- <div class="row">
+            <div class="input-field col s6 offset-s3">
+                <input id="img" name = "img" type="text" class="validate" required>
+                <label for="img">Picture url</label>
+                <span class="helper-text" data-error="Input url"></span>
+            </div>
+        </div> --}}
+        <div class="row">
+            <div class="input-field col s3 offset-s4">
+                <div class="uploadOuter">
+                        <label for="img" class="btn btn-primary">
+                            Upload
+                        </label>
+                    
+                    <span class="dragBox">
+                        Drag and Drop Image here
+                        <input type="file" onChange="dragNdrop(event)"
+                        ondragover="drag()"
+                        ondrop="drop()" 
+                        id="img" 
+                        name = "img"
+                        multiple
+                        >
+                    </span>
+			    </div>	    
+            </div>
+                <div class="row col s6 offset-s3">
+                    <div id="preview"></div>
+                </div>
+        </div>
+        <div class="row col s6 offset-s3">
+            <button class="btn btn-primary">Add product</button>
+        </div>
+
+    </form> 
+</div>
+
+               {{!-- <div class="uploadOuter">
+                        <label for="uploadFile" class="btn btn-primary">
+                            Upload
+                        </label>
+                    
+                    <span class="dragBox">
+                        Drag and Drop Image here
+                        <input type="file" onChange="dragNdrop(event)"
+                        ondragover="drag()"
+                        ondrop="drop()" 
+                        id="uploadFile" 
+                        multiple
+                        >
+                    </span>
+			    </div>	 --}}
