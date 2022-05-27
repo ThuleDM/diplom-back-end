@@ -4,7 +4,7 @@
     </div>
     
     
-    <form action="/add" method="POST">
+    <form id="uploadForm" action="/add" method="POST">
         <div class="row">
             <div class="input-field col s6 offset-s3">
                 <input id="title" name = "title" type="text" class="validate" required>
@@ -33,48 +33,28 @@
                 <span class="helper-text" data-error="Input url"></span>
             </div>
         </div> --}}
-        <div class="row">
-            <div class="input-field col s3 offset-s4">
-                <div class="uploadOuter">
-                        <label for="img" class="btn btn-primary">
-                            Upload
-                        </label>
-                    
-                    <span class="dragBox">
-                        Drag and Drop Image here
-                        <input type="file" onChange="dragNdrop(event)"
-                        ondragover="drag()"
-                        ondrop="drop()" 
-                        id="img" 
-                        name = "img"
-                        multiple
-                        >
-                    </span>
-			    </div>	    
+        <div class = "row">
+                        <div class="input-field col s6 offset-s3">
+
+               {{!-- <label>Materialize Multi File Input</label> --}}
+               <div class = "file-field input-field">
+                  <div class = "btn">
+                     <span>Browse</span>
+                <input id="imageFile" type="file" accept="image/png, image/gif, image/jpeg" multiple>
+                  </div>
+                  
+                  <div class = "file-path-wrapper">
+                     <input class = "file-path validate" type = "text"
+                        placeholder = "Upload multiple files" />
+                  </div>
+               </div>    
             </div>
-                <div class="row col s6 offset-s3">
-                    <div id="preview"></div>
-                </div>
-        </div>
+            </div>
+        
         <div class="row col s6 offset-s3">
-            <button class="btn btn-primary">Add product</button>
+            <button class="btn btn-primary" type="submit">Add product</button>
         </div>
 
     </form> 
 </div>
-
-               {{!-- <div class="uploadOuter">
-                        <label for="uploadFile" class="btn btn-primary">
-                            Upload
-                        </label>
-                    
-                    <span class="dragBox">
-                        Drag and Drop Image here
-                        <input type="file" onChange="dragNdrop(event)"
-                        ondragover="drag()"
-                        ondrop="drop()" 
-                        id="uploadFile" 
-                        multiple
-                        >
-                    </span>
-			    </div>	 --}}
+<script src="addProduct.js" type="application/javascript" />

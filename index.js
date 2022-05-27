@@ -8,7 +8,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongodb-session')(session);
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
 const homeRoutes = require('./routes/home');
-const addRoutes = require('./routes/add');
+const addRoutes = require('./routes/addProduct');
 const cartRoutes = require('./routes/cart');
 const productsRoutes = require('./routes/products');
 const myProductsRoutes = require('./routes/myProducts');
@@ -18,7 +18,7 @@ const authRoutes = require('./routes/auth');
 const varMiddleware = require('./middleware/variables');
 const userMiddleware = require('./middleware/user');
 
-const MONGODB_URI = `mongodb+srv://d1mpleo:inemev15@cluster0.fta6y.mongodb.net/onlineAdPlatform`;
+const MONGODB_URI = `mongodb+srv://d1mpleo:inemev15@cluster0.fta6y.mongodb.net/onlineAdPlatform?retryWrites=true&w=majority`;
 
 
 const app = express();
@@ -39,6 +39,8 @@ app.set('view engine', 'hbs');//использование движка
 app.set('views', 'views');//хранение шаблонов в указанной папке
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/media', express.static(path.join(__dirname, 'uploads')));
+
 app.use(express.urlencoded({extended: true}));
 app.use(session({
     secret: 'some secret value',
@@ -51,7 +53,7 @@ app.use(varMiddleware);
 app.use(userMiddleware);
 
 app.use('/', homeRoutes);
-app.use('/add', addRoutes);
+app.use('/add', addRoutes); //TODO merge with products
 app.use('/cart', cartRoutes);
 app.use('/products', productsRoutes);
 app.use('/myProducts', myProductsRoutes)
