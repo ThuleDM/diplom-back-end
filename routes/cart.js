@@ -19,12 +19,14 @@ function countPrice(products){
 
 router.post('/add', auth, async (req, res) => {
     console.log("here1")
-    const product = await Product.findById(req.body.id);
-    await req.user.addToCart(product);
-    console.log("here2")
-    res.send(200)
-    console.log("here3")
-    //res.redirect('/cart');
+    try{
+        const product = await Product.findById(req.body.id);
+        await req.user.addToCart(product);
+        res.redirect("/cart")
+    } catch(e){
+        console.log(e)
+        send(500)
+    }
 })
 
 router.delete('/remove/:id', auth, async(req, res) => {
