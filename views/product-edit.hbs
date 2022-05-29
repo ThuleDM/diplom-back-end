@@ -14,11 +14,12 @@
         <span class="helper-text" data-error="Input price"></span>
     </div>
 
-    <div>
-        <div class="input-field">
-        <input id="img" name = "img" type="text" class="validate" required value="{{product.img}}">
-        <label for="img">Picture url</label>
-        <span class="helper-text" data-error="Input url"></span>
+    <div class="row">
+        <div class="product img col s6">
+            {{#each product.img}}
+                <a><img src="/media/{{filename}}"></a>
+            {{/each}}
+        </div>
     </div>
 
     <input type="hidden" name="id" value="{{product.id}}">

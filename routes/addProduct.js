@@ -31,6 +31,8 @@ router.post('/', auth, upload.array("files"), async (req, res) => {
         title: req.body.title,
         price: req.body.price,
         img: req.files,
+        category: req.body.category,
+        about: req.body.about,
         userId: req.user._id
     })
 
@@ -40,6 +42,8 @@ router.post('/', auth, upload.array("files"), async (req, res) => {
     }catch(e){
         console.log(e);
     }
+
+    res.redirect('/myProducts');
 
 })
 
