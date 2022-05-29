@@ -1,3 +1,11 @@
+console.log("pipiska")
+M.Tabs.init(document.querySelectorAll('.tabs'));
+//dropdown button
+let dropdowns = document.querySelectorAll('.dropdown-trigger')
+for (let i = 0; i < dropdowns.length; i++){
+    M.Dropdown.init(dropdowns[i]);
+}
+
 const toCurrency = price => {
     return new Intl.NumberFormat('de-DE', {
         currency: 'EUR',
@@ -23,13 +31,6 @@ document.querySelectorAll('.price').forEach(node => {
 document.querySelectorAll('.date').forEach(node => {
     node.textContent = toDate(node.textContent);
 })
-
-M.Tabs.init(document.querySelectorAll('.tabs'));
-//dropdown button
-let dropdowns = document.querySelectorAll('.dropdown-trigger')
-for (let i = 0; i < dropdowns.length; i++){
-    M.Dropdown.init(dropdowns[i]);
-}
 
 //cart
 
@@ -69,54 +70,9 @@ if($cart) {
 }
 
 
-//ADD PRODUCTS 
-M.textareaAutoResize(document.getElementById('about'))
+//PRODUCT
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("ONLOAD CALLBACK")
-
-    M.FormSelect.init(document.getElementById('category'));
-
-    
-    const form = document.getElementById("uploadForm");
-
-    form.addEventListener("submit", submitForm);
-
-    function submitForm(e) {
-        e.preventDefault();
-        const title = document.getElementById("title");
-        const price = document.getElementById("price");
-        const category = document.getElementById("category");
-        const about = document.getElementById("about");
-        console.log("ABOUT VALUE :" + about.value);
-        const files = document.getElementById("imageFile");
-        console.log("files")
-        console.log(files)
-        const formData = new FormData();
-        formData.append("title", title.value);
-        formData.append("price", price.value);
-        formData.append("category", category.value);
-        formData.append("about", about.value);
-        for(let i =0; i < files.files.length; i++) {
-            console.log("PRIVIT")
-                formData.append("files", files.files[i]);
-        }
-        const full = location.protocol + '//' + location.host;
-        fetch(`${full}/add`, {
-            method: 'POST',
-            body: formData,
-            headers: {
-            //   "Content-Type": "multipart/form-data"
-            }
-        })
-            .then((res) => console.log(res))
-            .catch((err) => ("Error occured", err));
-    }
-  });
-
-  //PRODUCT
-
-  document.addEventListener('DOMContentLoaded', function() {
     console.log("HELLLLLOOOOO")
     var elems = document.querySelectorAll('.carousel');
     var instances = M.Carousel.init(elems, {
@@ -124,10 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         indicators: true,
         duration: 500
     });
-  });
-
-
-
+});
 
 
 //Sort by asc/desc
@@ -166,30 +119,3 @@ function mySortDesc(){
 function insertAfter(elem, refElem){
     return refElem.parentNode.insertBefore(elem, refElem.nextSibling);
 }
-
-// function dragNdrop(event){
-
-//     console.log(event.target.files[0]);
-// 	var filename = URL.createObjectURL(event.target.files[0]);
-//     console.log(filename);
-// 	var preview = document.getElementById('preview'); 
-// 	var previewImg = document.createElement("img"); 
-// 	previewImg.setAttribute("src", filename);
-
-// 	// preview.innerHTML = "";
-// 	preview.appendChild(previewImg);
-    
-//     for(let i = 0; i < preview.children.length; i++){
-//         console.log('HTML : ' + preview.children[i].getAttribute('src'));
-//     }
-
-// }
-
-// function drag(){
-// 	document.getElementById('uploadFile').parentNode.className = "draging dragBox";
-// }
-
-// function drop(){
-// 	document.getElementById('uploadFile').parentNode.className = 'dragBox';
-// }
-

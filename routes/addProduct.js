@@ -23,7 +23,7 @@ router.get('/', auth, (req, res) => {
 })
 
 //creates new product
-router.post('/', auth, upload.array("files"), async (req, res) => {
+router.post('/', auth, upload.array("files"), (req, res) => {
     console.log(req.body);
     console.log(req.files);
     
@@ -37,14 +37,12 @@ router.post('/', auth, upload.array("files"), async (req, res) => {
     })
 
     try{
-        await product.save();
-        res.redirect('/products');
+        product.save();
+        res.send(200);
     }catch(e){
         console.log(e);
+        res.send(500);
     }
-
-    res.redirect('/myProducts');
-
 })
 
 

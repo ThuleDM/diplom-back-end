@@ -10,6 +10,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    //todo extrac to a standalone document
     cart: {
         items: [
             {
@@ -21,11 +22,13 @@ const userSchema = new Schema({
                 productId: {
                     type: Schema.Types.ObjectId,
                     ref: 'Product',
-                    required: true
+                    required: true,
                 }
+
             }
         ]
     }
+    
 })
 
 userSchema.methods.addToCart = function(product) {
@@ -50,14 +53,14 @@ userSchema.methods.addToCart = function(product) {
     return this.save()
 }
 
-userSchema.methods.removeFromCart = function(id){
+userSchema.methods.removeFromCart = function(productId){
     let items = [...this.cart.items]
     console.log(items);
     const idx = items.findIndex(c => {
-        return c.productId.toString() === id.toString()
+        return c.productId.toString() === productId.toString()
     })
     if(items[idx].count === 1){
-        items = items.filter(c => c.productId.toString() !== id.toString());
+        items = items.filter(c => c.productId.toString() !== productId.toString());
     }else{
         items[idx].count--
     }
