@@ -36,7 +36,7 @@ const store = new MongoStore({
 
 app.engine('hbs', hbs.engine); //Регистрируем в экспрессе,что есть такой движок 
 app.set('view engine', 'hbs');//использование движка
-app.set('views', 'views');//хранение шаблонов в указанной папке
+app.set('views', 'public/views');//хранение шаблонов в указанной папке
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/media', express.static(path.join(__dirname, 'uploads')));
