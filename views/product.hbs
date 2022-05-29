@@ -1,7 +1,8 @@
 {{!-- <div class="container product"> --}}
+    {{> navbar}}
     <div class="row">
         
-        <div class = "col s7">
+        <div class = "col s5">
             <h1>{{product.title}}</h1>
 
             <div class="carousel carousel-slider">    
@@ -9,11 +10,28 @@
                 <a class="carousel-item"><img src="/media/{{filename}}"></a>
                 {{/each}}
             </div>  
-            <p class="price big">{{product.price}}</p>        
+            </p>        
         </div>
-        <div class="col s5">
-            
+        <div class="col s7">
+            <div class="row">
+                <div class="col s7">
+                    <h4>Price : <p class="price big">{{product.price}}</h4>
+                      <form action="/cart/add" method="POST">
+                        <input type="hidden" name="id" value="{{id}}">
+                        <button type="submit" class="btn btn-primary pulse">Buy</button>
+                      </form>
+                    <p >{{product.about}}</p>
+                                              
+                </div>
+
+            </div>
+
         </div>
     </div>
 
+
+
+
+
+{{!-- <script src="/product.js" type="application/javascript" /> --}}
 {{!-- </div> --}}

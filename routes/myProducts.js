@@ -7,7 +7,7 @@ router.get('/', auth , async (req, res) => {
 
     const myProducts = await Product.find({'userId' : req.user._id})
     .populate('userId', 'email name')
-    .select('price title img');
+    .select('price title img category about');
 
     console.log(myProducts.length);
 

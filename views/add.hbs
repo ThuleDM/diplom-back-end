@@ -21,11 +21,25 @@
         </div>
         <div class="row">
             <div class="input-field col s6 offset-s3">
-                <input id="category" name = "category" type="text" class="validate" required >
-                <label for="category">Category</label>
-                <span class="helper-text" data-error="Input category"></span>
+                <select id = "category">
+                    <option value="" disabled selected>Choose category</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                    <option value="5">Option 5</option>
+                    <option value="6">Option 6</option>
+                </select>
+                <label>Materialize Select</label>
             </div>
         </div>
+        <div class="row">
+            <div class="input-field col s6 offset-s3">
+                <textarea id="about" class="materialize-textarea"></textarea>
+                <label for="about">Textarea</label>
+            </div>
+        </div>
+
         {{!-- <div class="row">
             <div class="input-field col s6 offset-s3">
                 <input id="img" name = "img" type="text" class="validate" required>
@@ -57,4 +71,4 @@
 
     </form> 
 </div>
-<script src="addProduct.js" type="application/javascript" />
+{{!-- <script src="/addProduct.js" type="application/javascript"/> --}}

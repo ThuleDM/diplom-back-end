@@ -7,7 +7,7 @@ const router = Router();
 router.get('/', async (req, res) => {
     let products = await Product.find()
     .populate('userId', 'email name')
-    .select('price title img');
+    .select('price title img category about');
     
     if(req.user){
         products = products.filter(p => p.userId._id.toString() != req.user._id.toString());
