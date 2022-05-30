@@ -3,7 +3,6 @@ const Product = require ('../models/product.js');
 const auth = require('../middleware/auth');
 const router = Router();
 
-
 router.get('/', async (req, res) => {
     let products = await Product.find()
     .populate('userId', 'email name')

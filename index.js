@@ -13,6 +13,7 @@ const cartRoutes = require('./routes/cart');
 const productsRoutes = require('./routes/products');
 const myProductsRoutes = require('./routes/myProducts');
 const ordersRoutes = require('./routes/orders');
+const incomingOrders = require('./routes/incomingOrders');
 const authRoutes = require('./routes/auth');
 //const User = require('./models/user');
 const varMiddleware = require('./middleware/variables');
@@ -58,6 +59,7 @@ app.use('/cart', cartRoutes);
 app.use('/products', productsRoutes);
 app.use('/myProducts', myProductsRoutes)
 app.use('/orders', ordersRoutes);
+app.use('/incomingOrders', incomingOrders);
 app.use('/auth', authRoutes);
 
 const PORT = process.env.PORT || 3000;
