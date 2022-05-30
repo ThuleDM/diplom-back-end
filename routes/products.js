@@ -3,6 +3,22 @@ const Product = require ('../models/product.js');
 const auth = require('../middleware/auth');
 const router = Router();
 
+//todo get count of products
+router.get('/count', async (req, res) => {
+    let products = await Product.find().count
+    .populate('userId', 'email name')
+    .select('price title img category about');
+    if(req.user){
+        products = products
+        .filter(p => p.userId._id.toString() != req.user._id.toString());
+    }
+
+    res.render('products', {
+        title : 'Products',
+        isProducts : true,
+        products
+    });
+})
 
 router.get('/', async (req, res) => {
     let products = await Product.find()

@@ -1,8 +1,10 @@
 const {Schema, model} = require('mongoose');
 
 const orderSchema = new Schema({
+    //status: waiting, //completed 
     products: [
         {
+            //status: waiting, //confirmed //rejected
             product: {
                 type: Object,
                 required: true
@@ -11,6 +13,7 @@ const orderSchema = new Schema({
                 type: Number,
                 required: true
             }
+            
         }
     ],
     user: {
