@@ -33,7 +33,7 @@ router.post('/login', async(req, res) => {
                     if(err){
                         throw err;
                     }
-                    res.redirect('/');
+                    res.redirect('/products');
                 })
             }else{
                 req.flash('loginError', 'Incorrect password');
@@ -61,9 +61,10 @@ router.post('/register', async(req, res) => {
         }else{
             const hashPassword = await bcrypt.hash(password, 10);
             const user = new User({
-                email, name, password: hashPassword, cart: {items: []}
+                email, name, password: hashPassword
             })
             await user.save();
+            
             res.redirect('/auth/login#login');
         }
     }catch(e){

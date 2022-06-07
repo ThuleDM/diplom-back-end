@@ -31,7 +31,6 @@ router.post('/', auth, async (req, res) => {
         //дістаємо курси із кошика юзера
         const user = await req.user
         .populate('cart.items.productId');
-        // console.log(user.cart.items[0].productId.userId , user.cart.items.length);
         // форматування об'єкту курсів
         const products = user.cart.items.map(i => ({
             count: i.count,
@@ -46,7 +45,6 @@ router.post('/', auth, async (req, res) => {
             products : products
         })
 
-        // console.log(products);
 
         for(let i = 0; i < user.cart.items.length ; i++){
             

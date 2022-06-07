@@ -5,7 +5,7 @@ const router = Router();
 
 function mapCartItems(cart){
     return cart.items.map(c => ({
-        ...c.productId._doc,
+        ...c.productId.toJSON(),
          id: c.productId._id,
         count: c.count
     }))
@@ -17,8 +17,9 @@ function countPrice(products){
     }, 0)
 }
 
+
+
 router.post('/add', auth, async (req, res) => {
-    console.log("here1")
     try{
         const product = await Product.findById(req.body.id);
         await req.user.addToCart(product);
@@ -29,11 +30,12 @@ router.post('/add', auth, async (req, res) => {
     }
 })
 
+
+
 router.delete('/remove/:id', auth, async(req, res) => {
     await req.user.removeFromCart(req.params.id);
     const user = await req.user.populate('cart.items.productId');
     const products =  mapCartItems(user.cart);
-    console.log('Products : ' + products);
     const cart = {
         products, price: countPrice(products)
     }
@@ -42,8 +44,8 @@ router.delete('/remove/:id', auth, async(req, res) => {
 
 router.get('/', auth, async (req, res) => {
     const user = await req.user
-    .populate('cart.items.productId')
-
+    .populate('cart.items.productId');
+    console.log(user.cart);
     const products = mapCartItems(user.cart);
 
     res.render('cart', {
@@ -53,6 +55,7 @@ router.get('/', auth, async (req, res) => {
         price : countPrice(products)
     })
 })
+
 
 
 module.exports = router;

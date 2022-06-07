@@ -9,7 +9,6 @@ router.get('/', auth , async (req, res) => {
     .populate('userId', 'email name')
     .select('price title img category about');
 
-    console.log(myProducts.length);
 
     res.render('myProducts', {
         title : 'My Products',

@@ -14,7 +14,9 @@ const productsRoutes = require('./routes/products');
 const myProductsRoutes = require('./routes/myProducts');
 const ordersRoutes = require('./routes/orders');
 const incomingOrders = require('./routes/incomingOrders');
+const incomingOrdersHistory = require('./routes/incomingOrdersHistory');
 const authRoutes = require('./routes/auth');
+
 //const User = require('./models/user');
 const varMiddleware = require('./middleware/variables');
 const userMiddleware = require('./middleware/user');
@@ -30,14 +32,16 @@ const hbs = exphbs.create({
     extname: 'hbs'
 })
 
+app.engine('hbs', hbs.engine); //Регистрируем в экспрессе,что есть такой движок 
+app.set('view engine', 'hbs');//использование движка
+app.set('views', 'public/views');//хранение шаблонов в указанной папке
+
 const store = new MongoStore({
     collection: 'sessions',
     uri: MONGODB_URI
 })
 
-app.engine('hbs', hbs.engine); //Регистрируем в экспрессе,что есть такой движок 
-app.set('view engine', 'hbs');//использование движка
-app.set('views', 'public/views');//хранение шаблонов в указанной папке
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/media', express.static(path.join(__dirname, 'uploads')));
@@ -54,12 +58,13 @@ app.use(varMiddleware);
 app.use(userMiddleware);
 
 app.use('/', homeRoutes);
-app.use('/add', addRoutes); //TODO merge with products
+app.use('/add', addRoutes); 
 app.use('/cart', cartRoutes);
 app.use('/products', productsRoutes);
 app.use('/myProducts', myProductsRoutes)
 app.use('/orders', ordersRoutes);
 app.use('/incomingOrders', incomingOrders);
+app.use('/incomingOrdersHistory', incomingOrdersHistory);
 app.use('/auth', authRoutes);
 
 const PORT = process.env.PORT || 3000;

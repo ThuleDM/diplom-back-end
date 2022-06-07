@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
         formData.append("category", category.value);
         formData.append("about", about.value);
         for(let i =0; i < files.files.length; i++) {
-            console.log("PRIVIT")
             formData.append("files", files.files[i]);
         }
         const full = location.protocol + '//' + location.host;

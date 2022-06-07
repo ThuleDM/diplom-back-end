@@ -1,44 +1,97 @@
 <div class="row">
-  <h1>Products</h1>
-    <div class="col s2">
-      <button type="submit" class="btn btn-primary" id="sort-asc">Sort by asc</button>
-      <button type="submit" class="btn btn-primary" id="sort-desc">Sort by desc</button>
-      <div id="price-slider"></div>
+  <h1 class="left-align">Products</h1>
+  <ul class="pagination center-align" id="paginationTop">
+    {{!-- <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li> --}}
+
+    {{!-- <li class="active-page"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li> --}}
+    {{!-- <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li> --}}
+  </ul>
+    {{!-- <div class="col s2">
+
+    </div> --}}
+    <div class="row">
+      <div class="col s6 offset-s3">
+        
+        <div class="input-field col s4">
+          <select multiple id="category">
+            <option value="" disabled selected>All</option>
+            <option value="Збірні букети">Збірні букети</option>
+            <option value="Рози">Рози</option>
+            <option value="Тюльпани">Тюльпани</option>
+            <option value="Орхідеї">Орхідеї</option>
+            <option value="Піони">Піони</option>
+            <option value="Лілії">Лілії</option>
+            <option value="Ромашки">Ромашки</option>
+            <option value="Гортезії">Гортезії</option>
+            <option value="Хризантеми">Хризантеми</option>
+            <option value="Іриси">Іриси</option>
+          </select>
+          <label>Categories</label>
+        </div>
+
+        <div class="input-field col s3">
+          <select id="order">
+            <option value=""  selected>None</option>
+            <option value="asc" >Asc</option>
+            <option value="desc">Desc</option>
+          </select>
+          <label>Price order</label>
+        </div>
+
+        <div class="input-field col s3">
+          <select id="limit">
+            <option value="8" selected>8</option>
+            <option value="12">12</option>
+            <option value="24">24</option>
+          </select>
+          <label>Items per page</label>
+        </div>
+        <div class="valign-wrapper">
+          <button type="submit" class="btn btn-primary" id="find">Find</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="main-card col s10 offset-s1" id="products">
+        {{!-- filled automatically --}}
+        </div>
+      </div>
     </div>
-    <div class="col s10">
-      <div class="main-card">
-      {{#if products.length}}
-      {{#each products}}
-      {{!-- <div class="flex-content"> --}}
-        {{!-- <div class="row"> --}}
-            <div class="col s3" data-price = "{{price}}">
-              <div class="card card-panel hoverable" >
-                <div class="card-image" >
-                  <img src="{{img}}" alt = "{{title}}">
-                </div>
-                <div class="card-content">
-                  <span class="card-title truncate">{{title}}</span>
-                  <p class="price truncate">{{price}}</p>
-                </div>
-                <div class="card-action actions">
-                  <a href="/products/{{id}}" target="_blank">Open</a>
+    <ul class="pagination center-align " id="paginationBottom"></ul>
+
+</div>
+<script src="http://localhost:3000/js/products.js" type="application/javascript" ></script>
+
+
+
+
+            {{!-- <div class="col s3" data-price = "{{price}}">
+              <div class="card hoverable medium sticky-action" >
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="{{img}}" alt = "{{title}}">
+                  </div>
+                  <div class="card-content ">
+                    <span class="card-title activator grey-text text-darken-4">{{title}}<i class="material-icons right">more_vert</i></span>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">{{title}}<i class="material-icons right">close</i></span>
+                    <p>{{about}}</p>
+                  </div>
+                  <div class="card-action actions">
+                    <a href="/products/{{id}}" target="_blank">Open</a>
                     {{#if @root.isAuth}}
-                      {{!-- <a href="/products/{{id}}/edit?allow=true">Edit</a> --}}
+                      <a href="/products/{{id}}/edit?allow=true">Edit</a>
                       <form action="/cart/add" method="POST">
                         <input type="hidden" name="id" value="{{id}}">
                         <button type="submit" class="btn btn-primary">Buy</button>
                       </form>
                     {{/if}}
-                </div>
+                  </div>
               </div>
-            </div>
-        {{!-- </div> --}}
-      {{!-- </div> --}}
-      {{/each}}
-      {{else}}
-            <p>Dont have any products yet</p>
-      {{/if}}
-      </div>
-    </div>
-</div>
-<script src="http://localhost:3000/js/products.js" type="application/javascript" ></script>
+            </div> --}}
+
+
+            

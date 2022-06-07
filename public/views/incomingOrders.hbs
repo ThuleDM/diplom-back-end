@@ -2,8 +2,8 @@
 <h1>Incoming orders</h1>
 
   
-{{#if orders.length}}
-    {{#each orders}}
+{{#if incOrders.length}}
+    {{#each incOrders}}
         <div class="row">
             <div class="col s6 offset-s3">
                 <div class="card">
@@ -15,18 +15,29 @@
                         <p><em>{{user.userId.name}}</em>({{user.userId.email}})</p>
                         <ol>
                             {{#each products}}
-                                <li>
+                                <li >
                                     {{product.title}} (x<strong>{{count}}</strong>)
                                 </li>
+                                {{!-- <div class="switch">
+                                    <label>
+                                    Reject
+                                    <input type="checkbox">
+                                    <span class="lever"></span>
+                                    Submit
+                                    </label>
+                                </div> --}}
                             {{/each}}
                         </ol>
-
                         <hr>
-                        <p>Price: <span class="price">{{price}}</span></p>
+                        <div class = "product-info">
+                            <p>Price: <span class="price">{{price}}</span></p>
+                            <p>Status: <span>{{status}}</span></p>
+                                <button type="submit" class="btn btn-primary green" onclick = acceptOrder('{{_id}}')>Accept</button>
+                                <button type="submit" class="btn btn-primary red" onclick = rejectOrder('{{_id}}')>Reject</button>
+                        </div>
+
                     </div>
                     {{!-- todo add callbacks --}}
-                    <button class="success">Submit</button>
-                    <button class="reject">Reject</button>
                 </div>
             </div>
         </div>
@@ -35,3 +46,4 @@
     <p>You do not have any orders</p>
 {{/if}}
 </div>
+<script src="http://localhost:3000/js/incomingOrders.js" ></script>

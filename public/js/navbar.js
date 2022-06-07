@@ -1,17 +1,15 @@
-M.Tabs.init(document.querySelectorAll('.tabs'));
-//dropdown button
-let dropdowns = document.querySelectorAll('.dropdown-trigger')
-for (let i = 0; i < dropdowns.length; i++){
-    M.Dropdown.init(dropdowns[i]);
+console.log('asdasd');
+
+
+// //todo think if this can me moved to a scpefic page script file
+const toCurrency = price => {
+    return price.toLocaleString('uk-UA') + ' ₴'
 }
 
-//todo think if this can me moved to a scpefic page script file
-const toCurrency = price => {
-    return new Intl.NumberFormat('de-DE', {
-        currency: 'EUR',
-        style: 'currency'
-    }).format(price)
-}
+// new Intl.NumberFormat('uk-UA', {
+//     currency: '₴',
+//     style: 'currency'
+// }
 
 const toDate = date => {
     return new Intl.DateTimeFormat('de-DE', {
@@ -24,10 +22,22 @@ const toDate = date => {
     }).format(new Date(date))
 }
 
-document.addEventListener('DOMContentLoaded', function() {     
-    document.querySelectorAll('.price').forEach(node => {
-        node.textContent = toCurrency(node.textContent);
-    })
+document.addEventListener('DOMContentLoaded', function() { 
+    // console.log(document.querySelectorAll('.tabs'));
+
+    // M.Tabs.init(document.querySelectorAll('.tabs'));
+//dropdown button
+let dropdowns = document.querySelectorAll('.dropdown-trigger')
+console.log(dropdowns);
+for (let i = 0; i < dropdowns.length; i++){
+    M.Dropdown.init(dropdowns[i]);
+}
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+    
+    // document.querySelectorAll('.price').forEach(node => {
+    //     node.textContent = toCurrency(node.textContent);
+    // })
 
     document.querySelectorAll('.date').forEach(node => {
         node.textContent = toDate(node.textContent);

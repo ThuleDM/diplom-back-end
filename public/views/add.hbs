@@ -6,64 +6,57 @@
     
     <form id="uploadForm" action="/add" method="POST">
         <div class="row">
-            <div class="input-field col s6 offset-s3">
+            <div class="input-field col s3 offset-s3">
                 <input id="title" name = "title" type="text" class="validate" required>
                 <label for="title">Product name</label>
                 <span class="helper-text" data-error="Input name"></span>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s3 offset-s3">
+
+            <div class="input-field col s3">
                 <input id="price" name = "price" type="number" class="validate" required min="10">
                 <label for="price">Price</label>
                 <span class="helper-text" data-error="Input price"></span>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s6 offset-s3">
+            <div class="input-field col s3 offset-s3">
                 <select id = "category">
                     <option value="" disabled selected>Choose category</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                    <option value="5">Option 5</option>
-                    <option value="6">Option 6</option>
+                    <option value="Збірні букети">Збірні букети</option>
+                    <option value="Рози">Рози</option>
+                    <option value="Тюльпани">Тюльпани</option>
+                    <option value="Орхідеї">Орхідеї</option>
+                    <option value="Піони">Піони</option>
+                    <option value="Лілії">Лілії</option>
+                    <option value="Ромашки">Ромашки</option>
+                    <option value="Гортезії">Гортезії</option>
+                    <option value="Хризантеми">Хризантеми</option>
+                    <option value="Іриси">Іриси</option>
                 </select>
-                <label>Materialize Select</label>
+                <label>Categories</label>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6 offset-s3">
+
+            <div class="input-field col s3">
                 <textarea id="about" class="materialize-textarea"></textarea>
-                <label for="about">Textarea</label>
+                <label for="about">Discribe</label>
             </div>
         </div>
 
-        {{!-- <div class="row">
-            <div class="input-field col s6 offset-s3">
-                <input id="img" name = "img" type="text" class="validate" required>
-                <label for="img">Picture url</label>
-                <span class="helper-text" data-error="Input url"></span>
-            </div>
-        </div> --}}
         <div class = "row">
-                        <div class="input-field col s6 offset-s3">
-
-               {{!-- <label>Materialize Multi File Input</label> --}}
-               <div class = "file-field input-field">
-                  <div class = "btn">
-                     <span>Browse</span>
-                <input id="imageFile" type="file" accept="image/png, image/gif, image/jpeg" multiple>
-                  </div>
+            <div class="input-field col s6 offset-s3">
+                <div class = "file-field input-field">
+                    <div class = "btn">
+                        <span>Browse</span>
+                        <input id="imageFile" type="file" accept="image/png, image/gif, image/jpeg" multiple>
+                    </div>
                   
-                  <div class = "file-path-wrapper">
-                     <input class = "file-path validate" type = "text"
-                        placeholder = "Upload multiple files" />
-                  </div>
+                    <div class = "file-path-wrapper">
+                        <input class = "file-path validate" type = "text"
+                        placeholder = "Upload multiple images" />
+                    </div>
                </div>    
             </div>
-            </div>
+        </div>
         
         <div class="row col s6 offset-s3">
             <button class="btn btn-primary" type="submit">Add product</button>

@@ -1,7 +1,7 @@
 <div class="row">
   <h1>My products</h1>
 
-    <div class="col s10">
+    <div class="col s10 offset-s1">
       <div class="main-card">
       {{#if myProducts.length}}
       {{#each myProducts}}
@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-content">
                   <span class="card-title truncate">{{title}}</span>
-                  <span class="category truncate">{{category}}</span>
+                  
                   <p class="price truncate">{{price}}</p>
                 </div>
                 <div class="card-action actions">

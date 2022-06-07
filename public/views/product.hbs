@@ -1,9 +1,10 @@
-{{!-- <div class="container product"> --}}
+
     {{> navbar}}
+
     <div class="row">
         
-        <div class = "col s5">
-            <h1>{{product.title}}</h1>
+        <div class = "col s4">
+            <h5>{{product.title}}</h5>
 
             <div class="carousel carousel-slider">    
                 {{#each product.img}}
@@ -12,22 +13,32 @@
             </div>  
             </p>        
         </div>
-        <div class="col s7">
-            <div class="row">
-                <div class="col s7">
-                    <h4>Price : <p class="price big">{{product.price}}</h4>
-                      <form action="/cart/add" method="POST">
-                        <input type="hidden" name="id" value="{{id}}">
-                        <button type="submit" class="btn btn-primary pulse">Buy</button>
-                      </form>
-                    <p >{{product.about}}</p>
-                                              
+        <div class="row">
+            <div class="col s7">
+                <div class="row">
+                    <div class="col s5">
+                        <div class="row info-pannel">
+                            <div class = "col s5">
+                                
+                            <h5>Ціна: <span class="price big">{{product.price}}</span></h2>
+                            
+                                <form action="/cart/add" method="POST">
+                                    <input type="hidden" name="id" value="{{id}}">
+                                    <button type="submit" class="btn btn-primary pulse offset-s4">Купити</button>
+                                </form>
+                            </div>
+                            <div class="col s12 ">
+                                <div class="card-panel blue lighten-4">
+                                    <span >{{product.about}}</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <span>Зв'яжіться з продавцем</span>                                
+                    </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 
 <script src="http://localhost:3000/js/product.js" type="application/javascript" ></script>
-{{!-- </div> --}}

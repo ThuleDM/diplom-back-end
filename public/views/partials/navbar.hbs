@@ -1,18 +1,25 @@
-  <ul id="dropdown1" class="dropdown-content lime lighten-2">
+    <ul id="dropdown1" class="dropdown-content yellow">
     {{#if isAuth}}
-          {{#if isAdd}}
-            <li class="active"><a href="/add">Add product</a></li>
-          {{else}}
-            <li ><a href="/add">Add product</a></li>
-          {{/if}}
-
           {{#if isOrder}}
-            <li class="active"><a href="/orders">Order <span class="new badge">4</span></a></li>
+            <li class="active"><a href="/orders">Order<span class="new badge">4</span></a></li>
           {{else}}
             <li ><a href="/orders">Orders</a></li>
           {{/if}} 
+
+          {{#if isIncomingOrders}}
+            <li class="active"><a href="/incomingOrders">Incoming Order<span class="new badge">4</span></a></li>
+          {{else}}
+            <li ><a href="/incomingOrders">Incoming Orders</a></li>
+          {{/if}}
+
+          {{#if isIncomingOrdersHistory}}
+            <li class="active"><a href="/incomingOrdersHistory">Incoming orders history<span class="new badge">4</span></a></li>
+          {{else}}
+            <li ><a href="/incomingOrdersHistory">Incoming orders history</a></li>
+          {{/if}}
             <li ><a href="/auth/logout">Log out</a></li>
         {{else}}
+
           {{#if isLogin}}
             <li class="active"><a href="/auth/login#login">Log in</a></li>
           {{else}}
@@ -20,35 +27,126 @@
           {{/if}} 
       {{/if}}
   </ul>
+  <div class="navbar-fixed">
   <nav>
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo"> App</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        {{#if isHome}}
-          <li class="active"> <a href="/">Home page</a></li>
-        {{else}}
-          <li> <a href="/">Home page</a></li>
-        {{/if}}
-        {{#if isProducts}}
-          <li class="active"><a href="/products">products</a></li>
-        {{else}}
-          <li><a href="/products">Products</a></li>
-        {{/if}}
-        {{#if ismyProducts}}
-          <li class="active"><a href="/myProducts">My products</a></li>
-        {{else}}
-          <li><a href="/myProducts">My products</a></li>
-        {{/if}}
+    <div class="nav-wrapper blue darken-3">
+      <a href="/products" class="brand-logo">Logo</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+         <li class="search">
+           <form onsubmit="event.preventDefault()">
+              <div class="input-field">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </li>
+
+          
+          {{#if isProducts}}
+            <li class="active"><a href="/products">Products</a></li>
+          {{else}}
+            <li><a href="/products">Products</a></li>
+          {{/if}}
+          {{#if isAuth}}
+          {{#if ismyProducts}}
+            <li class="active"><a href="/myProducts">My products</a></li>
+          {{else}}
+            <li><a href="/myProducts">My products</a></li>
+          {{/if}}
+
+          {{#if isAdd}}
+            <li class="active"><a href="/add">Add product</a></li>
+          {{else}}
+            <li ><a href="/add">Add product</a></li>
+          {{/if}}
+          {{/if}}
           {{#if isCart}}
             <li class="active"><a href="/cart">Cart</a></li>
           {{else}}
             <li ><a href="/cart">Cart</a></li>
           {{/if}}
-         <a class="btn dropdown-trigger red darken-4" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right"></i></a>
+
+          <a class="btn dropdown-trigger blue" href="#!" data-target="dropdown1">My profile<i class="material-icons right"></i></a>
       </ul>
     </div>
   </nav>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  {{!-- <ul class="sidenav" id="mobile-demo">
+<li class="search">
+              <form >
+                <div class="input-field">
+                  <input id="search" type="search" required>
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </li>
+
+            
+            {{#if isProducts}}
+              <li class="active"><a href="/products">Products</a></li>
+            {{else}}
+              <li><a href="/products">Products</a></li>
+            {{/if}}
+            {{#if isAuth}}
+            {{#if ismyProducts}}
+              <li class="active"><a href="/myProducts">My products</a></li>
+            {{else}}
+              <li><a href="/myProducts">My products</a></li>
+            {{/if}}
+
+            {{#if isAdd}}
+              <li class="active"><a href="/add">Add product</a></li>
+            {{else}}
+              <li ><a href="/add">Add product</a></li>
+            {{/if}}
+            {{/if}}
+            {{#if isCart}}
+              <li class="active"><a href="/cart">Cart</a></li>
+            {{else}}
+              <li ><a href="/cart">Cart</a></li>
+            {{/if}}
+   {{#if isAuth}}
+          {{#if isOrder}}
+            <li class="active"><a href="/orders">Order<span class="new badge">4</span></a></li>
+          {{else}}
+            <li ><a href="/orders">Orders</a></li>
+          {{/if}} 
+
+          {{#if isIncomingOrders}}
+            <li class="active"><a href="/incomingOrders">Incoming Order<span class="new badge">4</span></a></li>
+          {{else}}
+            <li ><a href="/incomingOrders">Incoming Orders</a></li>
+          {{/if}}
+
+          {{#if isIncomingOrdersHistory}}
+            <li class="active"><a href="/incomingOrdersHistory">Incoming orders history<span class="new badge">4</span></a></li>
+          {{else}}
+            <li ><a href="/incomingOrdersHistory">Incoming orders history</a></li>
+          {{/if}}
+            <li ><a href="/auth/logout">Log out</a></li>
+        {{else}}
+
+          {{#if isLogin}}
+            <li class="active"><a href="/auth/login#login">Log in</a></li>
+          {{else}}
+            <li ><a href="/auth/login#login">Log in</a></li>
+          {{/if}} 
+      {{/if}}
+
+           
+  </ul> --}}
+ {{!-- <a class="btn dropdown-trigger blue" href="#!" data-target="dropdown1">My profile<i class="material-icons right"></i></a> --}}
+</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>
   {{!-- todo fix --}}
   <script src="http://localhost:3000/js/navbar.js" type="application/javascript" ></script>
+
+
+              {{!-- {{#if isHome}}
+              <li class="active"> <a href="/">Home page</a></li>
+            {{else}}
+              <li> <a href="/">Home page</a></li>
+            {{/if}} --}}

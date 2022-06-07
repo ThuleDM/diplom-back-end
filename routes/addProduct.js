@@ -23,9 +23,7 @@ router.get('/', auth, (req, res) => {
 })
 
 //creates new product
-router.post('/', auth, upload.array("files"), (req, res) => {
-    console.log(req.body);
-    console.log(req.files);
+router.post('/', auth, upload.array("files"), async (req, res) => {
     
     const product = new Product({
         title: req.body.title,
@@ -37,7 +35,7 @@ router.post('/', auth, upload.array("files"), (req, res) => {
     })
 
     try{
-        product.save();
+        await product.save();
         res.send(200);
     }catch(e){
         console.log(e);

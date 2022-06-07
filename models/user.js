@@ -10,7 +10,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    //todo extrac to a standalone document
     cart: {
         items: [
             {
@@ -48,7 +47,7 @@ userSchema.methods.addToCart = function(product) {
 
     const newCart = {items: clonedItems};
     this.cart = newCart;
-    //this.cart = {items: clonedItems};
+    
 
     return this.save()
 }

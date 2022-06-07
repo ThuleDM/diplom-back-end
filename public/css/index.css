@@ -1,9 +1,20 @@
+body{
+    background:#fff9c4;
+}
+
+
 .nav-wrapper{
     padding : 0 2rem;
 }
 
+.nav-wrapper form{
+    min-width: 400px;
+    background: #bbdefb;
+    height: 64px;
+}
+
 .price{
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 
 .product{
@@ -12,10 +23,32 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-} 
+}
+
+.products-list{
+    display: flex;
+    justify-content:flex-start;
+}
+
 
 .card-image{
-    height: 200px;
+    height:250px
+}
+
+.card-action.actions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card .card-content{
+  padding: 10px;
+}
+
+.carousel{
+ margin-top: 5%;
+ max-width: 90%;
+ max-height: 90%;
 }
 
 .block{
@@ -38,14 +71,13 @@
     height: auto;
 }
 
-.product.price.big{
-    font-size: 2.5rem;
+.info-pannel{
+    margin-top: 21%;
+    border: 2px dashed rgb(166, 171, 241);
 }
 
-.card-action.actions{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.product .price.big{
+    font-size: 4rem;
 }
 
 .large{
@@ -94,27 +126,10 @@ strong {
 	transition: transform 0.3s;
 	
 }
-input[type="file"] {
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		opacity: 0;
-		top: 0;
-		left: 0;
+
+.btn-primary{
+    background: #1565c0;
 }
 
-.draging {
-	transform: scale(1.1);
-}
-
-#preview {
-    text-align:justify;	
-}
-
-#preview img {
-    padding-left: 3px;
-	max-width: 100%;
-	max-height: 100px;
-}
 
 
