@@ -1,11 +1,8 @@
 
     {{> navbar}}
-
     <div class="row">
-        
         <div class = "col s4">
             <h5>{{product.title}}</h5>
-
             <div class="carousel carousel-slider">    
                 {{#each product.img}}
                 <a class="carousel-item"><img src="/media/{{filename}}"></a>
@@ -13,32 +10,58 @@
             </div>  
             </p>        
         </div>
-        <div class="row">
-            <div class="col s7">
-                <div class="row">
-                    <div class="col s5">
-                        <div class="row info-pannel">
-                            <div class = "col s5">
-                                
-                            <h5>Ціна: <span class="price big">{{product.price}}</span></h2>
-                            
-                                <form action="/cart/add" method="POST">
-                                    <input type="hidden" name="id" value="{{id}}">
-                                    <button type="submit" class="btn btn-primary pulse offset-s4">Купити</button>
-                                </form>
-                            </div>
-                            <div class="col s12 ">
-                                <div class="card-panel blue lighten-4">
-                                    <span >{{product.about}}</span>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <span>Зв'яжіться з продавцем</span>                                
+        <div class="col s3">
+            <div class="row info-pannel">
+                <div class="col s5">
+                    <h5>Ціна: <span class="price big">{{product.price}}</span></h2>
+                    <form action="/cart/add" method="POST">
+                        <input type="hidden" name="id" value="{{id}}">
+                        <button type="submit" class="btn btn-primary pulse offset-s4">Купити</button>
+                    </form>
+                </div>
+                <div class="col s12 ">
+                    <div class="card-panel blue lighten-4">
+                        <span>{{product.about}}</span>
                     </div>
                 </div>
             </div>
+            <span>Зв'яжіться з продавцем</span>
         </div>
-    </div>
+        <div class="col s5">
+            <div class="row">
+                <h5>Товари за цією категорією</h5>
+                {{#if similarProducts.length}}
+                {{#each similarProducts}}
+                <div class="col s6">
+                    <div class="card hoverable medium sticky-action">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="/media/{{img.0.filename}}" alt="{{title}}">
+                        </div>
+                        <div class="card-content ">
+                            <span class="card-title activator grey-text text-darken-4">{{title}}<i
+                                    class="material-icons right">more_vert</i></span>
+                            <p>{{price}}</p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{title}}<i
+                                    class="material-icons right">close</i></span>
+                            <p>{{about}}</p>
+                        </div>
+                        <div class="card-action actions">
+                            <a href="/products/{{id}}" target="_blank">Open</a>
+                            {{#if @root.isAuth}}
+                            <form action="/cart/add" method="POST">
+                                <input type="hidden" name="id" value="{{id}}">
+                                <button type="submit" class="btn btn-primary">Buy</button>
+                            </form>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                {{/if}}
+            </div>
+        </div>
+        </div>
 
 <script src="http://localhost:3000/js/product.js" type="application/javascript" ></script>

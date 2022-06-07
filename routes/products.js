@@ -96,10 +96,16 @@ router.post('/remove', auth, async(req, res) => {
 
 router.get('/:id', async (req, res) => {
     const product = await Product.findById(req.params.id);
+
+    let similarProducts = await Product.find({category : product.category}).limit(7);
+    similarProducts = similarProducts.filter(p => p.id !== req.params.id);
+    console.log(similarProducts.length);
+
     res.render('product', {
         layout: 'empty',
         title : `Product ${product.title}`,
-        product
+        product,
+        similarProducts
     });
 })
 

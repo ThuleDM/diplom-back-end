@@ -73,71 +73,72 @@
     </div>
   </nav>
 
-  {{!-- <ul class="sidenav" id="mobile-demo">
-<li class="search">
-              <form >
-                <div class="input-field">
-                  <input id="search" type="search" required>
-                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                  <i class="material-icons">close</i>
-                </div>
-              </form>
-            </li>
+  <ul class="sidenav" id="mobile-demo">
+    <li class="search">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </li>
+    
+    {{#if isProducts}}
+      <li class="active"><a href="/products">Products</a></li>
+    {{else}}
+      <li><a href="/products">Products</a></li>
+    {{/if}}
+    
+    {{#if isAuth}}
+    {{#if ismyProducts}}
+      <li class="active"><a href="/myProducts">My products</a></li>
+    {{else}}
+      <li><a href="/myProducts">My products</a></li>
+    {{/if}}
+    
+    {{#if isAdd}}
+      <li class="active"><a href="/add">Add product</a></li>
+    {{else}}
+      <li><a href="/add">Add product</a></li>
+    {{/if}}
+    {{/if}}
 
-            
-            {{#if isProducts}}
-              <li class="active"><a href="/products">Products</a></li>
-            {{else}}
-              <li><a href="/products">Products</a></li>
-            {{/if}}
-            {{#if isAuth}}
-            {{#if ismyProducts}}
-              <li class="active"><a href="/myProducts">My products</a></li>
-            {{else}}
-              <li><a href="/myProducts">My products</a></li>
-            {{/if}}
+    {{#if isCart}}
+      <li class="active"><a href="/cart">Cart</a></li>
+    {{else}}
+      <li><a href="/cart">Cart</a></li>
+    {{/if}}
 
-            {{#if isAdd}}
-              <li class="active"><a href="/add">Add product</a></li>
-            {{else}}
-              <li ><a href="/add">Add product</a></li>
-            {{/if}}
-            {{/if}}
-            {{#if isCart}}
-              <li class="active"><a href="/cart">Cart</a></li>
-            {{else}}
-              <li ><a href="/cart">Cart</a></li>
-            {{/if}}
-   {{#if isAuth}}
-          {{#if isOrder}}
-            <li class="active"><a href="/orders">Order<span class="new badge">4</span></a></li>
-          {{else}}
-            <li ><a href="/orders">Orders</a></li>
-          {{/if}} 
+    {{#if isAuth}}
+    {{#if isOrder}}
+      <li class="active"><a href="/orders">Order<span class="new badge">4</span></a></li>
+    {{else}}
+      <li><a href="/orders">Orders</a></li>
+    {{/if}}
+    
+    {{#if isIncomingOrders}}
+      <li class="active"><a href="/incomingOrders">Incoming Order<span class="new badge">4</span></a></li>
+    {{else}}
+      <li><a href="/incomingOrders">Incoming Orders</a></li>
+    {{/if}}
+    
+    {{#if isIncomingOrdersHistory}}
+      <li class="active"><a href="/incomingOrdersHistory">Incoming orders history<span class="new badge">4</span></a></li>
+    {{else}}
+      <li><a href="/incomingOrdersHistory">Incoming orders history</a></li>
+    {{/if}}
+      <li><a href="/auth/logout">Log out</a></li>
+    {{else}}
+    
+    {{#if isLogin}}
+      <li class="active"><a href="/auth/login#login">Log in</a></li>
+    {{else}}
+      <li><a href="/auth/login#login">Log in</a></li>
+    {{/if}}
+    {{/if}}
 
-          {{#if isIncomingOrders}}
-            <li class="active"><a href="/incomingOrders">Incoming Order<span class="new badge">4</span></a></li>
-          {{else}}
-            <li ><a href="/incomingOrders">Incoming Orders</a></li>
-          {{/if}}
-
-          {{#if isIncomingOrdersHistory}}
-            <li class="active"><a href="/incomingOrdersHistory">Incoming orders history<span class="new badge">4</span></a></li>
-          {{else}}
-            <li ><a href="/incomingOrdersHistory">Incoming orders history</a></li>
-          {{/if}}
-            <li ><a href="/auth/logout">Log out</a></li>
-        {{else}}
-
-          {{#if isLogin}}
-            <li class="active"><a href="/auth/login#login">Log in</a></li>
-          {{else}}
-            <li ><a href="/auth/login#login">Log in</a></li>
-          {{/if}} 
-      {{/if}}
-
-           
-  </ul> --}}
+    </ul>
  {{!-- <a class="btn dropdown-trigger blue" href="#!" data-target="dropdown1">My profile<i class="material-icons right"></i></a> --}}
 </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.js"></script>

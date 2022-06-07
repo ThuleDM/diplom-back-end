@@ -6,6 +6,11 @@ const toCurrency = price => {
     return price.toLocaleString('uk-UA') + ' ₴'
 }
 
+let dropdowns = document.querySelectorAll('.dropdown-trigger')
+console.log(dropdowns);
+for (let i = 0; i < dropdowns.length; i++){
+    M.Dropdown.init(dropdowns[i]);
+}
 // new Intl.NumberFormat('uk-UA', {
 //     currency: '₴',
 //     style: 'currency'
@@ -27,11 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // M.Tabs.init(document.querySelectorAll('.tabs'));
 //dropdown button
-let dropdowns = document.querySelectorAll('.dropdown-trigger')
-console.log(dropdowns);
-for (let i = 0; i < dropdowns.length; i++){
-    M.Dropdown.init(dropdowns[i]);
-}
+    let butCol = document.querySelectorAll('.button-collapse');
+    console.log('HELLO BUTTROM : ' + butCol);
+
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems);
     

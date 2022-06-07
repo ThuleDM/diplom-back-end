@@ -68,6 +68,7 @@ function rerenderProducts(products, isAuth){
                       </div>
                   </div>
                 </div>`
+                console.log(typeof productHtml);
                 productsDiv.innerHTML += productHtml;
             }
     }
