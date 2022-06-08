@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     res.render('products', {
         title : 'Products',
         isProducts : true,
-        products
+        products : products.reverse()
     });
 })
 
@@ -54,7 +54,7 @@ router.get('/filter', async (req, res) => {
 
     let startProductIndex = offset*limit;
     let endProductIndex = parseInt(startProductIndex) + parseInt(limit);
-    products = products.slice(startProductIndex, endProductIndex);
+    products = products.reverse().slice(startProductIndex, endProductIndex);
 
 
     //TODO get total number of products
