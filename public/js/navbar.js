@@ -1,10 +1,7 @@
-console.log('asdasd');
-
-
 // //todo think if this can me moved to a scpefic page script file
-const toCurrency = price => {
-    return price.toLocaleString('uk-UA') + ' ₴'
-}
+// const toCurrency = price => {
+//     return price.toLocaleString('uk-UA') + ' ₴';
+// }
 
 let dropdowns = document.querySelectorAll('.dropdown-trigger')
 console.log(dropdowns);
@@ -28,15 +25,13 @@ const toDate = date => {
 }
 
 document.addEventListener('DOMContentLoaded', function() { 
-    // console.log(document.querySelectorAll('.tabs'));
+    M.Tabs.init(document.querySelectorAll('.tabs'));
 
-    // M.Tabs.init(document.querySelectorAll('.tabs'));
-//dropdown button
     let butCol = document.querySelectorAll('.button-collapse');
     console.log('HELLO BUTTROM : ' + butCol);
 
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems);
+    let elems = document.querySelectorAll('.sidenav');
+    let instances = M.Sidenav.init(elems);
     
     // document.querySelectorAll('.price').forEach(node => {
     //     node.textContent = toCurrency(node.textContent);

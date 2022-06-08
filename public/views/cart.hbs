@@ -2,7 +2,7 @@
 <h1>Cart</h1>
 <div id="cart">
 {{#if products.length}}
-    <table>
+    <table class="flow-text">
         <thead>
             <tr>
                 <th>product name</th>
@@ -12,13 +12,15 @@
         </thead>
         <tbody>
             {{#each products}}
-            <tr>
-                <td>{{title}}</td>
-                <td>
-                    <div class="plus medium material-icons">remove_circle_outline</div>
-                    {{count}}
-                    <div class="minus medium material-icons">add_circle_outline</div>
-                </td>
+            <tr id="cart-position-{{id}}">
+                <td >{{title}}</td>
+                    <td>
+                        <span class="valign-wrapper">
+                            <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons minus cart-icons" data-id="{{id}}">remove</i></a>
+                                <span id="count-{{id}}"> {{count}}</span>
+                            <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons plus cart-icons" data-id="{{id}}">add</i></a>
+                        </span>
+                    </td>       
                 <td>
                     <button class="btn btm-small js-remove" data-id="{{id}}">Delete</button>
                 </td>

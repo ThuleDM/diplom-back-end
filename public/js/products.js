@@ -11,12 +11,21 @@ document.addEventListener('DOMContentLoaded', function(){
     categoriesOpt = M.FormSelect.getInstance(document.getElementById('category'));
     priceOrderOpt = document.getElementById('order')
     itemsPerPageOpt = document.getElementById('limit')
-    search = document.getElementById('search');
+    search = document.querySelectorAll('.searchBar');
+    console.log(search);
 
-    search.addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        findProducts(currentOffset);
-      }
+    // search.addEventListener('keypress', function (e) {
+    //   if (e.key === 'Enter') {
+    //     findProducts(currentOffset);
+    //   }
+    // });
+
+    search.forEach(search => {
+      search.addEventListener('keypress', function(e){
+        if(e.key === 'Enter'){
+          findProducts(currentOffset);
+        }
+      })
     });
 
     document.querySelector('#find').addEventListener('click', () => {
@@ -35,7 +44,6 @@ function rerenderProducts(products, isAuth){
     productsDiv.innerHTML = "";
     for(let index in products){
         const product = products[index];
-
                   let productHtml =
                   `<div class="col s3">
                     <div class="card hoverable medium sticky-action" >
@@ -175,7 +183,7 @@ function findProducts(offset){
   console.log(categories);
   let order = priceOrderOpt.options[priceOrderOpt.selectedIndex].value;
   let limit = itemsPerPageOpt.options[itemsPerPageOpt.selectedIndex].value;
-  let title = search.value;
+  let title = search[0].value;
   title = title ? title : "";
     // number of products per page
   fetch(`/products/filter?categories=${categories}&&order=${order}&&offset=${offset}&&limit=${limit}&&title=${title}`)
@@ -188,7 +196,6 @@ function findProducts(offset){
   })
   .catch((err) => {
       console.log(err);
-      alert(err);
   })
 }
 

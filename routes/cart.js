@@ -4,11 +4,15 @@ const auth = require('../middleware/auth');
 const router = Router();
 
 function mapCartItems(cart){
-    return cart.items.map(c => ({
-        ...c.productId.toJSON(),
-         id: c.productId._id,
+    return cart.items.map(c => {
+        console.log(c.productId);
+        let productIdJson =  c.productId ? c.productId.toJSON() : {}
+        let id = c.productId ? c.productId._id : ""
+        return ({
+        ...productIdJson,
+         id,
         count: c.count
-    }))
+    })})
 }
 
 function countPrice(products){
@@ -26,7 +30,23 @@ router.post('/add', auth, async (req, res) => {
         res.redirect("/cart")
     } catch(e){
         console.log(e)
-        send(500)
+        res.send(500)
+    }
+})
+
+router.post('/add/:id', auth, async (req, res) => {
+    try{
+        console.log(req.params.id)
+        await req.user.addToCart2(req.params.id);
+        const user = await req.user.populate('cart.items.productId');
+        const products =  mapCartItems(user.cart);
+        const cart = {
+            products, price: countPrice(products)
+        }
+        res.status(200).json(cart);
+    } catch(e){
+        console.log(e)
+        res.send(500)
     }
 })
 

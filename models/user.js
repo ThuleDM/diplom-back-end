@@ -1,7 +1,12 @@
 const {Schema, model} = require('mongoose');
 
+
 const userSchema = new Schema({
     email: {
+        type: String,
+        required: true
+    },
+    phone: {
         type: String,
         required: true
     },
@@ -30,6 +35,29 @@ const userSchema = new Schema({
     
 })
 
+userSchema.methods.validateEmail = function(email) {
+    let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email)
+};
+
+userSchema.methods.validatePhone = function(phone) {
+    let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email)
+};
+
+userSchema.methods.addToCart2 = function(product) {
+    const clonedItems = [...this.cart.items];
+    const idx = clonedItems.findIndex(c => {
+        return c.productId.toString() === product.toString();
+    })
+    clonedItems[idx].count = clonedItems[idx].count + 1;
+    const newCart = {items: clonedItems};
+    this.cart = newCart;
+    
+
+    return this.save()
+
+}
 userSchema.methods.addToCart = function(product) {
     const clonedItems = [...this.cart.items];
     const idx = clonedItems.findIndex(c => {

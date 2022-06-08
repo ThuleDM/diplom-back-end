@@ -36,11 +36,11 @@ router.post('/login', async(req, res) => {
                     res.redirect('/products');
                 })
             }else{
-                req.flash('loginError', 'Incorrect password');
+                req.flash('loginError', 'Неправильний пароль');
                 res.redirect('/auth/login#login');
             }
         }else{
-            req.flash('loginError', 'Such user does not exist');
+            req.flash('loginError', 'Такого користувача не існує');
             res.redirect('/auth/login#login');
         }
     }catch(e){
@@ -51,25 +51,48 @@ router.post('/login', async(req, res) => {
 
 router.post('/register', async(req, res) => {
     try{
-        const {email, password, repeat, name} = req.body;
+        const {email, password, repeatPassword, name, phone} = req.body;
 
         const candidate = await User.findOne({email});
 
         if(candidate){
-            req.flash('registerError', 'User with this email already exists');
+            req.flash('registerError', 'Користувач із цією електронною адресою вже існує');
             res.redirect('/auth/login#register');
         }else{
-            const hashPassword = await bcrypt.hash(password, 10);
-            const user = new User({
-                email, name, password: hashPassword
-            })
-            await user.save();
-            
-            res.redirect('/auth/login#login');
+            if(!validateEmail(email)){
+                req.flash('registerError', 'Невірний імейл');
+                res.redirect('/auth/login#register');
+            }else if(!validatePhone(phone)){
+                console.log(phone);
+                console.log(validatePhone(phone));
+                req.flash('registerError', 'Невірний номер телефону');
+                res.redirect('/auth/login#register');
+            }else if(password !== repeatPassword){
+                req.flash('registerError', 'Паролі не співпадають!');
+                res.redirect('/auth/login#register');
+            }else{
+                const hashPassword = await bcrypt.hash(password, 10);
+                const user = new User({
+                    email, phone, name, password: hashPassword
+                })
+                await user.save();
+                
+                res.redirect('/auth/login#login');
+            }
         }
+ 
     }catch(e){
         console.log(e);
     }
 })
+
+let validateEmail = function(email) {
+    let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email)
+};
+let validatePhone = function(phone) {
+    let re = /^\+?3?8?(0\d{9})$/;
+    return re.test(phone)
+};
 
 module.exports = router;
